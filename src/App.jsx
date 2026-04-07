@@ -43,8 +43,8 @@ const SHARED_RANGES = [
 
 const IMG = (id, n) =>
   n === "figure"
-    ? `/assets/origami/${id}/figure.jpg`
-    : `/assets/origami/${id}/${n}.jpg`;
+    ? `./assets/origami/${id}/figure.jpg`
+    : `./assets/origami/${id}/${n}.jpg`;
 
 function shuffle(arr) {
   const a = [...arr];
@@ -617,11 +617,11 @@ export default function OrigamiContinuity() {
   const [answers, setAnswers] = useState([]);
 
   useEffect(() => {
-    fetch("/assets/origami/index.json").then(r => r.json())
+    fetch("./assets/origami/index.json").then(r => r.json())
       .then(d => { if (Array.isArray(d) && d.length) setLibrary(d); }).catch(() => { });
-    fetch("/assets/origami/similar.json").then(r => r.json())
+    fetch("./assets/origami/similar.json").then(r => r.json())
       .then(d => { if (d?.similar) setSimilar(d.similar); }).catch(() => { });
-    fetch("/assets/origami/origin.json").then(r => r.json())
+    fetch("./assets/origami/origin.json").then(r => r.json())
       .then(d => { if (Array.isArray(d) && d.length) setOrigin(d); }).catch(() => { });
   }, []);
 
